@@ -23,7 +23,7 @@ var questions = [
   {
     question: "What team is wolverine a part of?",
     choices: ["The X-Men", "JSA", "JLA", "X-Force"],
-    correctAnswer:1
+    correctAnswer:0
   }
 ];
 
@@ -125,6 +125,8 @@ function finalScore() {
   scoreBoard.setAttribute("id", "score");
   scoreBoard.innerHTML = "Your final score: " + score + "/" + questions.length;
   document.body.appendChild(scoreBoard);
+
 }
+
 
 createForm(questions);
