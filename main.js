@@ -1,3 +1,4 @@
+// questions
 var questions = [
   {
     question: "Who is Prime Minister of the United Kingdom?",
@@ -5,38 +6,51 @@ var questions = [
     correctAnswer:0
   },
   {
-    question: "Who is the the king of the world?",
-    choices: ["Ghandi", "Homer Simpson", "Reno Jackson", "Trudeau"],
+    question: "Who is the the president of the United States?",
+    choices: ["Trump", "Obama", "Santa", "Putin"],
     correctAnswer:0
   },
   {
-    question: "Why are these questions so damn stupid?",
-    choices: ["I dunno", "You really should know", "Guess", "Call a friend"],
+    question: "Who is the author of the Lord of The Rings series?",
+    choices: ["JK Rowling", "JR Tolkien", "Stan Lee", "Mr. Bean"],
+    correctAnswer:1
+  },
+  {
+    question: "How many teams are in the NHL?",
+    choices: ["20", "21", "33", "30"],
+    correctAnswer:3
+  },
+  {
+    question: "What team is wolverine a part of?",
+    choices: ["The X-Men", "JSA", "JLA", "X-Force"],
     correctAnswer:1
   }
 ];
 
-var app = document.getElementById("app");
 var questionCount = 0;
 var score = 0;
-
 
 function createForm(questions) {
   var form = document.createElement("form");
   var button = document.createElement("button");
+  var title = document.createElement("h1");
+
+  title.setAttribute("id", "title");
+  title.innerHTML = "The Quizzard";
 
   form.setAttribute("id", "quiz");
+
+  document.body.appendChild(title);
   form.appendChild(createHeading());
   createRadioButtons(form);
+  button.innerHTML = "GO";
+  form.appendChild(button);
+  document.body.appendChild(form);
 
   button.addEventListener("click", function(e){
     e.preventDefault();
     checkAnswer();
   });
-
-  button.innerHTML = "GO";
-  form.appendChild(button);
-  document.body.appendChild(form);
 }
 
 function createRadioButtons(form) {
@@ -51,6 +65,7 @@ function createRadioButtons(form) {
     radioButton.setAttribute("name", "Q");
     form.appendChild(radioButton);
     form.appendChild(label);
+    form.appendChild(document.createElement("br"));
   }
 }
 
@@ -87,7 +102,7 @@ function radioIsEmpty() {
 
 function checkAnswer() {
   if (radioIsEmpty()) {
-    console.log("Choose something");
+    alert("Please make a choice");
     return;
   }
 
@@ -107,6 +122,7 @@ function checkAnswer() {
 
 function finalScore() {
   scoreBoard = document.createElement("h1");
+  scoreBoard.setAttribute("id", "score");
   scoreBoard.innerHTML = "Your final score: " + score + "/" + questions.length;
   document.body.appendChild(scoreBoard);
 }
